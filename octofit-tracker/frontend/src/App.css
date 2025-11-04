@@ -1,0 +1,111 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* OctoFit custom theme */
+:root{
+  --octo-bg-1: #0f1724; /* dark navy */
+  --octo-bg-2: #0b3142; /* teal */
+  --accent: #17a2b8; /* bootstrap info-ish */
+  --muted: #9aa7b0;
+  --card-bg: rgba(255,255,255,0.03);
+}
+
+body {
+  background: linear-gradient(135deg, var(--octo-bg-1) 0%, var(--octo-bg-2) 100%);
+  color: #e6f7fa;
+}
+
+.navbar {
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.navbar .navbar-brand {
+  color: var(--accent) !important;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.octo-logo {
+  height: 36px;
+  width: 36px;
+  margin-right: 10px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04));
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.card-title { color: var(--accent); }
+
+.table thead th {
+  background: rgba(255,255,255,0.04);
+  color: #cdeff5;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+  background-color: rgba(255,255,255,0.015);
+}
+
+.table-hover>tbody>tr:hover>* {
+  background-color: rgba(23,162,184,0.06);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  border-color: rgba(23,162,184,0.9);
+}
+
+.btn-link { color: #bfeff6; }
+
+h2, h3, h4 {
+  color: #dff9fb;
+}
+
+a { color: #9feaf5; }
+
+.alert-info { background: rgba(23,162,184,0.08); color: #cdeff5; border: 1px solid rgba(23,162,184,0.14); }
+.alert-danger { background: rgba(255,100,100,0.06); color: #ffd9d9; border: 1px solid rgba(255,100,100,0.12); }
+
+/* small responsive tweaks */
+@media (max-width: 576px) {
+  .octo-logo { height: 28px; width:28px; }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

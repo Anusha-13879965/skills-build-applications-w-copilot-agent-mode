@@ -12,6 +12,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,24 @@ SECRET_KEY = 'django-insecure-c!%s9$7iqip1my@811*o80))*)6m6a+p&nel99np1vsd8h%)()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# Allow localhost and the Codespace host (if present). Do not hardcode the codespace name;
+# read it from the environment so the same code works in different Codespaces.
+codespace_name = os.environ.get('CODESPACE_NAME')
+allowed = ["localhost", "127.0.0.1", "0.0.0.0", "[::1]"]
+if codespace_name:
+    # Codespaces provide URLs like: {CODESPACE_NAME}-8000.app.github.dev
+    allowed.append(f"{codespace_name}-8000.app.github.dev")
+
+ALLOWED_HOSTS = allowed
+
+# For HTTPS dev on Codespaces, add the codespace host to CSRF_TRUSTED_ORIGINS
+CSRF_TRUSTED_ORIGINS = []
+if codespace_name:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{codespace_name}-8000.app.github.dev")
+
+# Avoid automatic HTTPS redirects in development which can cause certificate issues
+# when testing the dev server behind Codespaces' proxy.
+SECURE_SSL_REDIRECT = False
 
 
 # Application definition
